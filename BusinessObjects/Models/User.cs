@@ -18,16 +18,15 @@ namespace BusinessObjects.Models
         [Required]
         [StringLength(255)]
         public string Username { get; set; }
-        [Required]
         [EmailAddress]
         [StringLength(255)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [Required]
         [StringLength(255)]
         public string Password { get; set; }
         public DateOnly? DateOfBirth { get; set; }
         public string? PhoneNumber { get; set; }
-        public DateTime CreateAt { get; set; }
+        public DateTime CreateAt { get; set; } = DateTime.Now;
         public virtual ICollection<WishList> WishLists { get; set;}
         public virtual ICollection<Cart> Carts { get; set;}
         public virtual ICollection<Order> Orders { get; set;}

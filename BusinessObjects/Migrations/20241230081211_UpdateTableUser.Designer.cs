@@ -4,6 +4,7 @@ using BusinessObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessObjects.Migrations
 {
     [DbContext(typeof(ShopDBContext))]
-    partial class ShopDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241230081211_UpdateTableUser")]
+    partial class UpdateTableUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +49,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Cart");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.CartItem", b =>
@@ -78,7 +81,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("CartItems");
+                    b.ToTable("CartItem");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.Category", b =>
@@ -111,7 +114,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.Inventory", b =>
@@ -133,7 +136,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Inventories");
+                    b.ToTable("Inventory");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.Order", b =>
@@ -163,7 +166,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.OrderItem", b =>
@@ -195,7 +198,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.PaymentDetail", b =>
@@ -231,7 +234,7 @@ namespace BusinessObjects.Migrations
                     b.HasIndex("OrderId")
                         .IsUnique();
 
-                    b.ToTable("PaymentDetails");
+                    b.ToTable("PaymentDetail");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.Product", b =>
@@ -300,7 +303,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasIndex("TypeAttibuteId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.ProductAttribute", b =>
@@ -329,7 +332,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductAttributes");
+                    b.ToTable("ProductAttribute");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.User", b =>
@@ -377,7 +380,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.WishList", b =>
@@ -406,7 +409,7 @@ namespace BusinessObjects.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("WishLists");
+                    b.ToTable("WishList");
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.Cart", b =>
