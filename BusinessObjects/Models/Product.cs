@@ -25,8 +25,8 @@ namespace BusinessObjects.Models
         public int? ColorAttibuteId { get; set; }
         public int? DiscountId { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
-        public DateTime DeletedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
+        public DateTime? DeletedAt { get; set; }
         public virtual Category Category { get; set; }
         public virtual Inventory Inventory { get; set; }
         public virtual ProductAttribute TypeAttribute {  get; set; }

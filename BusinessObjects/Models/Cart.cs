@@ -14,7 +14,7 @@ namespace BusinessObjects.Models
         public int UserId { get; set; }
         public decimal Total {  get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<CartItem> CartItems { get; set; }
 

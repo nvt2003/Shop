@@ -20,6 +20,9 @@ namespace BusinessObjects
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Username)
+                .IsUnique(true);
             modelBuilder.Entity<WishList>()
                 .HasOne(w=>w.User)
                 .WithMany(c=>c.WishLists)

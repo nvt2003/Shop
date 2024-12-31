@@ -1,18 +1,17 @@
 ﻿
 
-using System.ComponentModel.DataAnnotations;
+using BusinessObjects.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace BusinessObjects.Models
+namespace BusinessObjects.DTOs
 {
-    public class Inventory
+    public class InventoryViewModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
         public int Id { get; set; }
         public decimal Quantity { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
-        public virtual Product Product { get; set; }
+        public ProductBasicViewModel ProductView { get; set; }
     }
 }

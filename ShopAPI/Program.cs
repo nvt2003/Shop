@@ -18,8 +18,12 @@ builder.Services.AddDbContext<ShopDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyDB")));
 
 builder.Services.AddScoped<UserDAO>();
+builder.Services.AddScoped<CategoryDAO>();
+builder.Services.AddScoped<InventoryDAO>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -14,7 +14,7 @@ namespace BusinessObjects.Models
         public int PaymentId { get; set; }
         public decimal Total { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
         public virtual User User { get; set; }
         public virtual PaymentDetail PaymentDetail { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
