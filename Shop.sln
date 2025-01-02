@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopAPI", "ShopAPI\ShopAPI.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{4EEF9F01-8AB1-4B7F-AAB9-58DE9E408943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{31E391D6-97DC-473D-8FC2-7AC4637D7DDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{31E391D6-97DC-473D-8FC2-7AC4637D7DDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{552D12B2-3001-4C85-8AA6-D896072B7BF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{552D12B2-3001-4C85-8AA6-D896072B7BF7}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "shopwebwithreact", "ShopWebWithReact\shopwebwithreact.esproj", "{5A34CC69-6262-4318-A472-3F2B776E1D01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,12 @@ Global
 		{552D12B2-3001-4C85-8AA6-D896072B7BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{552D12B2-3001-4C85-8AA6-D896072B7BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{552D12B2-3001-4C85-8AA6-D896072B7BF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A34CC69-6262-4318-A472-3F2B776E1D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A34CC69-6262-4318-A472-3F2B776E1D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A34CC69-6262-4318-A472-3F2B776E1D01}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5A34CC69-6262-4318-A472-3F2B776E1D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A34CC69-6262-4318-A472-3F2B776E1D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A34CC69-6262-4318-A472-3F2B776E1D01}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

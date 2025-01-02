@@ -8,11 +8,19 @@ using Repositories.IRepository;
 using Repositories.Repository;
 using System.Text;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+    {
+        policy.WithOrigins("http://localhost:5173");
+    });
+});
 builder.Services.AddAutoMapper(typeof(MyMappingProfiles).Assembly);
 builder.Services.AddDbContext<ShopDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyDB")));
@@ -79,6 +87,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();
