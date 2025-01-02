@@ -36,9 +36,10 @@ namespace ShopAPI.Controllers
             }
             try
             {
-                if(_categoryRepository.CreateCategory(categoryDTO))
+                var category = _categoryRepository.CreateCategory(categoryDTO);
+                if(category.Id!=null)
                 {
-                    return Created();
+                    return Ok(categoryDTO);
                 }
                 else
                 {
@@ -68,7 +69,8 @@ namespace ShopAPI.Controllers
                     return NotFound("Not found category with id " + id);
                 }
                 updateCategory = categoryDTO;
-                if(_categoryRepository.UpdateCategory(updateCategory))
+                var category = _categoryRepository.UpdateCategory(updateCategory);
+                if(category.Id!=null)
                 {
                     return NoContent();
                 }
@@ -92,7 +94,7 @@ namespace ShopAPI.Controllers
                 {
                     return NotFound();
                 }
-                if (_categoryRepository.DeleteCategory(id))
+                if (_categoryRepository.HideCategory(id))
                 {
                     return NoContent();
                 }

@@ -13,14 +13,14 @@ namespace Repositories.Repository
         {
             _categoryDAO = categoryDAO;
         }
-        public bool CreateCategory(CategoryDTO categoryDTO)
+        public CategoryDTO CreateCategory(CategoryDTO categoryDTO)
         {
             return _categoryDAO.CreateCategory(categoryDTO);
         }
 
-        public bool DeleteCategory(int id)
+        public bool HideCategory(int id)
         {
-            return _categoryDAO.DeleteCategory(id);
+            return _categoryDAO.HideCategory(id);
         }
 
         public List<CategoryDTO> GetAllCategories()
@@ -38,7 +38,7 @@ namespace Repositories.Repository
             return _categoryDAO.GetCategoryById(id);
         }
 
-        public bool UpdateCategory(CategoryDTO categoryDTO)
+        public CategoryDTO UpdateCategory(CategoryDTO categoryDTO)
         {
             return _categoryDAO.UpdateCategory(categoryDTO);
         }

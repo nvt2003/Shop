@@ -37,34 +37,34 @@ namespace DataAccess.DAO
             var categoryDto = _mapper.Map<CategoryDTO>(category);
             return categoryDto;
         }
-        public bool CreateCategory(CategoryDTO categoryDTO)
+        public CategoryDTO CreateCategory(CategoryDTO categoryDTO)
         {
             try
             {
                 Category addCategory = _mapper.Map<Category>(categoryDTO);
                 _context.Categories.Add(addCategory);
                 _context.SaveChanges();
-                return true;
+                return categoryDTO;
             }catch (Exception ex)
             {
-                return false;
+                return new CategoryDTO();
             }
         }
-        public bool UpdateCategory(CategoryDTO categoryDTO)
+        public CategoryDTO UpdateCategory(CategoryDTO categoryDTO)
         {
             try
             {
                 Category updateCategory = _mapper.Map<Category>(categoryDTO);
                 _context.Categories.Update(updateCategory);
                 _context.SaveChanges();
-                return true;
+                return categoryDTO;
             }
             catch (Exception ex)
             {
-                return false;
+                return new CategoryDTO();
             }
         }
-        public bool DeleteCategory(int id)
+        public bool HideCategory(int id)
         {
             try
             {

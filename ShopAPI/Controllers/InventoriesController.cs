@@ -36,9 +36,10 @@ namespace ShopAPI.Controllers
             }
             try
             {
-                if (_inventoryRepository.CreateInventory(inventoryDTO))
+                var inventory = _inventoryRepository.CreateInventory(inventoryDTO);
+                if (inventory.Id!=null)
                 {
-                    return Created();
+                    return Ok(inventoryDTO);
                 }
                 else
                 {
@@ -67,7 +68,8 @@ namespace ShopAPI.Controllers
                 {
                     return NotFound("Not found inventory with id "+id);
                 }
-                if (_inventoryRepository.UpdateInventory(inventoryDTO))
+                var inventory = _inventoryRepository.UpdateInventory(inventoryDTO);
+                if (inventory.Id!=null)
                 {
                     return NoContent();
                 }
@@ -90,7 +92,7 @@ namespace ShopAPI.Controllers
                 {
                     return NotFound("Not found inventory with id " + id);
                 }
-                if (_inventoryRepository.DeleteInventory(id))
+                if (_inventoryRepository.HideInventory(id))
                 {
                     return NoContent();
                 }

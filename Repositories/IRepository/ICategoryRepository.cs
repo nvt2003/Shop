@@ -8,8 +8,8 @@ namespace Repositories.IRepository
         List<CategoryDTO> GetAllCategories();
         List<CategoryDTO> GetCategories(int page, int pageSize);
         CategoryDTO GetCategoryById(int id);
-        bool CreateCategory(CategoryDTO categoryDTO);
-        bool UpdateCategory(CategoryDTO categoryDTO);
-        bool DeleteCategory(int id);
+        CategoryDTO CreateCategory(CategoryDTO categoryDTO);
+        CategoryDTO UpdateCategory(CategoryDTO categoryDTO);
+        bool HideCategory(int id);
     }
 }

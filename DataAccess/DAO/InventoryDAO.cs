@@ -31,34 +31,36 @@ namespace DataAccess.DAO
             var inventoryVM = _mapper.Map<InventoryViewModel>(inventory);
             return inventoryVM;
         }
-        public bool CreateInventory(InventoryDTO inventoryDTO)
+        public InventoryDTO CreateInventory(InventoryDTO inventoryDTO)
         {
             try
             {
                 Inventory inventory = _mapper.Map<Inventory>(inventoryDTO);
                 _context.Inventories.Add(inventory);
                 _context.SaveChanges();
-                return true;
+                //_context.Entry(inventory).GetDatabaseValues();
+                inventoryDTO.Id = inventory.Id;
+                return inventoryDTO;
             }catch (Exception ex)
             {
-                return false;
+                return new InventoryDTO();
             }
         }
-        public bool UpdateInventory(InventoryDTO inventoryDTO)
+        public InventoryDTO UpdateInventory(InventoryDTO inventoryDTO)
         {
             try
             {
                 Inventory inventory = _mapper.Map<Inventory>(inventoryDTO);
                 _context.Inventories.Update(inventory);
                 _context.SaveChanges();
-                return true;
+                return inventoryDTO;
             }
             catch (Exception ex)
             {
-                return false;
+                return new InventoryDTO();
             }
         }
-        public bool DeleteInventory(int id)
+        public bool HideInventory(int id)
         {
             //try
             //{

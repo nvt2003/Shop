@@ -6,8 +6,8 @@ namespace Repositories.IRepository
     {
         List<InventoryViewModel> GetInventories(int page, int pageSize);
         InventoryViewModel GetInventoryById(int id);
-        bool CreateInventory(InventoryDTO inventoryDTO);
-        bool UpdateInventory(InventoryDTO inventoryDTO);
-        bool DeleteInventory(int id);
+        InventoryDTO CreateInventory(InventoryDTO inventoryDTO);
+        InventoryDTO UpdateInventory(InventoryDTO inventoryDTO);
+        bool HideInventory(int id);
     }
 }

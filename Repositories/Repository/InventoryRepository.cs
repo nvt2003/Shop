@@ -14,14 +14,14 @@ namespace Repositories.Repository
             _inventoryDAO = inventoryDAO;
         }
 
-        public bool CreateInventory(InventoryDTO inventoryDTO)
+        public InventoryDTO CreateInventory(InventoryDTO inventoryDTO)
         {
             return _inventoryDAO.CreateInventory(inventoryDTO);
         }
 
-        public bool DeleteInventory(int id)
+        public bool HideInventory(int id)
         {
-            return _inventoryDAO.DeleteInventory(id);
+            return _inventoryDAO.HideInventory(id);
         }
 
         public List<InventoryViewModel> GetInventories(int page, int pageSize)
@@ -34,7 +34,7 @@ namespace Repositories.Repository
             return _inventoryDAO.GetInventoryById(id);
         }
 
-        public bool UpdateInventory(InventoryDTO inventoryDTO)
+        public InventoryDTO UpdateInventory(InventoryDTO inventoryDTO)
         {
             return _inventoryDAO.UpdateInventory(inventoryDTO);
         }

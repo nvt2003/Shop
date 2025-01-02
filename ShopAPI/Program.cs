@@ -20,10 +20,15 @@ builder.Services.AddDbContext<ShopDBContext>(options =>
 builder.Services.AddScoped<UserDAO>();
 builder.Services.AddScoped<CategoryDAO>();
 builder.Services.AddScoped<InventoryDAO>();
+builder.Services.AddScoped<ProductAttributeDAO>();
+builder.Services.AddScoped<ProductDAO>();
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+builder.Services.AddTransient<IInventoryRepository, InventoryRepository>();
+builder.Services.AddTransient<IProductAttributeRepository, ProductAttributeRepository>();
+builder.Services.AddTransient<IProductRepository, ProductRepository>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
