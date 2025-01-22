@@ -3,6 +3,7 @@ using BusinessObjects.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.IRepository;
+using System.Net.Http.Headers;
 
 namespace ShopAPI.Controllers
 {
@@ -83,8 +84,8 @@ namespace ShopAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("{id}")]
-        public IActionResult DeleteProduct(int id)
+        [HttpDelete("{id}/Inventory/{inventoryId}")]
+        public IActionResult DeleteProduct(int id, int inventoryId)
         {
             try
             {
@@ -93,10 +94,45 @@ namespace ShopAPI.Controllers
                 {
                     return NotFound("Not found product with id " + id);
                 }
+                var inventory = _inventoryRepository.GetInventoryById(inventoryId);
+                if (inventory == null)
+                {
+                    return NotFound("Cannot delete product becasue cannot found inventory id "+inventoryId);
+                }
                 _productRepository.HideProduct(id);
+                _inventoryRepository.HideInventory(inventoryId);
                 return NoContent();
             }
             catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("file-image-product")]
+        public async Task<IActionResult> UploadImageProduct(IFormFile imageFile)
+        {
+            try
+            {
+                var filename = ContentDispositionHeaderValue.Parse(imageFile.ContentDisposition).FileName.TrimStart('\"').TrimEnd('\"');
+                string newPath = @"E:\to-delete";
+
+                if (!Directory.Exists(newPath))
+                {
+                    Directory.CreateDirectory(newPath);
+                }
+                string[] allowedImageExtensions = new string[] { ".jpg", ".jpeg", ".png" };
+                if (!allowedImageExtensions.Contains(Path.GetExtension(filename)))
+                {
+                    return BadRequest("Only .jpg, .jpeg, .png allow!");
+                }
+                string newFilename = Guid.NewGuid()+Path.GetExtension(filename);
+                string fullPath = Path.Combine(newPath, newFilename);
+                using(var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                return Ok(new { ProfileImage = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}/StaticFiles/{newFilename}" });
+            }catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

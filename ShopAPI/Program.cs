@@ -2,6 +2,7 @@ using BusinessObjects;
 using DataAccess.DAO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Repositories.IRepository;
@@ -88,6 +89,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(@"E:\to-delete"),
+    RequestPath = "/StaticFiles"
+});
 app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
